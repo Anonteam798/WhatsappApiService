@@ -1,7 +1,7 @@
 package com.infinity.bytes.WhatsappApiService.service;
 
 
-import com.infinity.bytes.WhatsappApiService.model.Client;
+import com.infinity.bytes.WhatsappApiService.model.entity.Client;
 import com.infinity.bytes.WhatsappApiService.repository.IClientRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;

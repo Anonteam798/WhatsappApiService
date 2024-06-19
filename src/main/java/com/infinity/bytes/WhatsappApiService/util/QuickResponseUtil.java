@@ -1,0 +1,12 @@
+package com.infinity.bytes.WhatsappApiService.util;
+
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+public class QuickResponseUtil {
+
+
+
+
+}

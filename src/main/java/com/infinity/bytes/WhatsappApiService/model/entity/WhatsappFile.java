@@ -2,10 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.infinity.bytes.WhatsappApiService.model;
+package com.infinity.bytes.WhatsappApiService.model.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -22,21 +21,25 @@ import lombok.NoArgsConstructor;
 @Data
 @Table(catalog = "whatsappDb", schema = "public")
 @NamedQueries({
-    @NamedQuery(name = "MessageTypes.findAll", query = "SELECT m FROM MessageTypes m")})
-public class MessageTypes implements Serializable {
+    @NamedQuery(name = "WhatsappFile.findAll", query = "SELECT w FROM WhatsappFile w")})
+public class WhatsappFile implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    private Integer id;
-    private String type;
-    private String isActive;
+    private Integer uuid;
+    private String name;
+    private String fullPath;
+    private String extension;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    private Double size;
+    private String isUploaded;
+    private String uploadUrl;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreation;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateDeleted;
-    @OneToMany(mappedBy = "idTypeMessage", fetch = FetchType.LAZY)
-    private Collection<WhatsappMensaje> whatsappMensajeCollection;
+    private String isActive;
 
 }
