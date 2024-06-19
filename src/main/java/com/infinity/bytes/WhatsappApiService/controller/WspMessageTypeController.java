@@ -7,7 +7,6 @@ import com.infinity.bytes.WhatsappApiService.model.dto.ResponseDto;
 import com.infinity.bytes.WhatsappApiService.model.dto.response.MessageTypeDTOResp;
 import com.infinity.bytes.WhatsappApiService.model.entity.MessageTypes;
 import com.infinity.bytes.WhatsappApiService.service.IMainService;
-import com.infinity.bytes.WhatsappApiService.service.MessageTypeServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -20,11 +19,11 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("wspTypes")
 @Slf4j
-public class WhatsappMessageTypeController {
+public class WspMessageTypeController {
     private IMainService<MessageTypes> objMessageTypesIMainService;
     private ClassMapper objObjectMapper;
 
-    public WhatsappMessageTypeController(IMainService<MessageTypes> objMessageTypesIMainService, ClassMapper objObjectMapper) {
+    public WspMessageTypeController(IMainService<MessageTypes> objMessageTypesIMainService, ClassMapper objObjectMapper) {
         this.objMessageTypesIMainService = objMessageTypesIMainService;
         this.objObjectMapper = objObjectMapper;
     }

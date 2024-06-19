@@ -31,6 +31,8 @@ public class WhatsappMensaje implements Serializable {
 
     private Integer idWhatsAppFile;
 
+    private String groupId;
+
     private Boolean flagSent;
 
     @Temporal(TemporalType.TIMESTAMP)
