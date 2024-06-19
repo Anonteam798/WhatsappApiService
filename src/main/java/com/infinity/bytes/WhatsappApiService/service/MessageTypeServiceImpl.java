@@ -2,6 +2,7 @@ package com.infinity.bytes.WhatsappApiService.service;
 
 import com.infinity.bytes.WhatsappApiService.config.ClassMapper;
 import com.infinity.bytes.WhatsappApiService.exception.DataNotFoundException;
+import com.infinity.bytes.WhatsappApiService.exception.DataRepeatedException;
 import com.infinity.bytes.WhatsappApiService.model.dto.response.MessageTypeDTOResp;
 import com.infinity.bytes.WhatsappApiService.model.entity.MessageTypes;
 import com.infinity.bytes.WhatsappApiService.repository.IWhatsappMessageType;
@@ -32,7 +33,6 @@ public class MessageTypeServiceImpl implements  IMainService<MessageTypes>{
     }
 
 
-
     @Override
     public Optional<MessageTypes> findItem(Object id) {
 
@@ -44,6 +44,8 @@ public class MessageTypeServiceImpl implements  IMainService<MessageTypes>{
 
     @Override
     public MessageTypes createItem(MessageTypes newItem) {
+        Optional<MessageTypes> exists = this.objIWhatsappMessageType.findByType(newItem.getType());
+        if (exists.isPresent()) throw new DataRepeatedException(String.format("El item \"%s\" ya se encuentra registrado" , newItem.getType()));
         return this.objIWhatsappMessageType.save(newItem);
     }
 

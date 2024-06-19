@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @AllArgsConstructor
@@ -16,7 +18,7 @@ import java.util.List;
 public class ResponseDto {
     private boolean success;
     private String message;
-    private List<Object> errors;
+    private Object errors;
     private Object data;
 
 }

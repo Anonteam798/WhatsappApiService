@@ -67,7 +67,6 @@ public class MainRecords implements CommandLineRunner {
             allTypesToSave.add(MessageTypes.builder().isActive("S").dateCreation(new Date()).type(MessageTypesEnum.TEMPLATE_BUTTON_REPLY.toString()).build());
             allTypesToSave.add(MessageTypes.builder().isActive("S").dateCreation(new Date()).type(MessageTypesEnum.POLL_CREATION.toString()).build());
 
-
             this.objMessageService.createItemsInBatch(allTypesToSave);
 
             log.debug(String.format("Se han guardado %s entidades de MessageType", allTypesToSave.size()));

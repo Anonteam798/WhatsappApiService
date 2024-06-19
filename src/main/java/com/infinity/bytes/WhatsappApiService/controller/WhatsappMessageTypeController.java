@@ -11,10 +11,9 @@ import com.infinity.bytes.WhatsappApiService.service.MessageTypeServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -49,4 +48,30 @@ public class WhatsappMessageTypeController {
                     , HttpStatusCode.valueOf(200)
             );
     }
+
+    @PostMapping("/register/{name}")
+    public ResponseEntity<?> registerNewMessageType(@PathVariable("name") String newMessageType){
+        log.debug("Se ha detectado la insercion del nuevo tipo de mensaje: " + newMessageType);
+        MessageTypes createdMessageType =  this.objMessageTypesIMainService.createItem(MessageTypes.builder()
+                        .type(newMessageType)
+                        .dateCreation(new Date())
+                        .isActive("S")
+                .build());
+
+        return new ResponseEntity<>(
+                ResponseDto.builder()
+                        .message(ResponseDtoEnum.PROCESO_OK.toString())
+                        .success(true)
+                        .errors(null)
+                        .data(this.objObjectMapper.modelMapper().map(createdMessageType, MessageTypeDTOResp.class))
+                        .build()
+                , HttpStatusCode.valueOf(200)
+        );
+
+    }
+
+
+
+
+
 }
