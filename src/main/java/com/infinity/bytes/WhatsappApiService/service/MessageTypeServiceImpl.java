@@ -1,6 +1,8 @@
 package com.infinity.bytes.WhatsappApiService.service;
 
+import com.infinity.bytes.WhatsappApiService.config.ClassMapper;
 import com.infinity.bytes.WhatsappApiService.exception.DataNotFoundException;
+import com.infinity.bytes.WhatsappApiService.model.dto.response.MessageTypeDTOResp;
 import com.infinity.bytes.WhatsappApiService.model.entity.MessageTypes;
 import com.infinity.bytes.WhatsappApiService.repository.IWhatsappMessageType;
 import jakarta.transaction.Transactional;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Transactional
@@ -18,14 +21,17 @@ public class MessageTypeServiceImpl implements  IMainService<MessageTypes>{
 
     private IWhatsappMessageType objIWhatsappMessageType;
 
-    public MessageTypeServiceImpl(IWhatsappMessageType iWhatsappMessageType) {
-        this.objIWhatsappMessageType = iWhatsappMessageType;
+    public MessageTypeServiceImpl(IWhatsappMessageType objIWhatsappMessageType) {
+        this.objIWhatsappMessageType = objIWhatsappMessageType;
+
     }
 
     @Override
     public List<MessageTypes> getAllData() {
         return this.objIWhatsappMessageType.findAll();
     }
+
+
 
     @Override
     public Optional<MessageTypes> findItem(Object id) {

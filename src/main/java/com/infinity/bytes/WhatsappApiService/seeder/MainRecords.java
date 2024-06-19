@@ -30,7 +30,6 @@ public class MainRecords implements CommandLineRunner {
         if (allTypeMessages.isEmpty()){
             List<MessageTypes> allTypesToSave =
                     new ArrayList<>();
-
             allTypesToSave.add(MessageTypes.builder().isActive("S").dateCreation(new Date()).type(MessageTypesEnum.TEXT.toString()).build());
             allTypesToSave.add(MessageTypes.builder().isActive("S").dateCreation(new Date()).type(MessageTypesEnum.AUDIO.toString()).build());
             allTypesToSave.add(MessageTypes.builder().isActive("S").dateCreation(new Date()).type(MessageTypesEnum.VOICE.toString()).build());
