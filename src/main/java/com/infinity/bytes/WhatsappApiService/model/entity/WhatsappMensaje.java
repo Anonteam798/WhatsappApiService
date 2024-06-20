@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +14,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Data
 @Table(name = "whatsapp_mensaje", catalog = "whatsappDb", schema = "public")
 public class WhatsappMensaje implements Serializable {
@@ -46,7 +48,7 @@ public class WhatsappMensaje implements Serializable {
     @JoinColumn(name = "id_contact_to", referencedColumnName = "id")
     private Contact idContactTo;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne( fetch = FetchType.LAZY)
     @JoinColumn(name = "id_type_message", referencedColumnName = "id")
     private MessageTypes idTypeMessage;
 

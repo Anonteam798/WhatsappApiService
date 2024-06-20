@@ -2,6 +2,8 @@ package com.infinity.bytes.WhatsappApiService.model.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,7 +37,7 @@ public class MessageTypes implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateDeleted;
 
-    @OneToOne(mappedBy = "idTypeMessage", fetch = FetchType.LAZY)
-    private WhatsappMensaje whatsappMensaje;
+    @OneToMany(mappedBy = "idTypeMessage", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<WhatsappMensaje> whatsappMensajes;
 
 }

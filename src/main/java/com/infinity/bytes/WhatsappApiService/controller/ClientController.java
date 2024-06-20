@@ -2,7 +2,7 @@ package com.infinity.bytes.WhatsappApiService.controller;
 
 
 import com.infinity.bytes.WhatsappApiService.service.ClientServiceImpl;
-import com.infinity.bytes.WhatsappApiService.service.IMainService;
+import com.infinity.bytes.WhatsappApiService.service.interfaces.IMainService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

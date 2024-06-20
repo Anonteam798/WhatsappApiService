@@ -10,6 +10,6 @@ import java.util.Optional;
 public interface IContactRepository extends JpaRepository<Contact, Integer> {
 
     Optional<Contact> findByPhoneNumber(String phoneNumber);
-
+    Optional<Contact> findByContactName(String ContactName);
 
 }

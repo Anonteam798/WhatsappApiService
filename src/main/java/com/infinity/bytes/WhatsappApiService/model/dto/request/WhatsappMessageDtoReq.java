@@ -23,13 +23,13 @@ public class WhatsappMessageDtoReq {
 
     private Integer idWhatsAppFile;
 
-    /*
     @NotNull(message = "Debe existir un remitente del mensaje")
     private ContactDtoReq idContactFrom;
 
     @NotNull(message = "Debe existir un receptor del mensaje")
     private ContactDtoReq idContactTo;
-*/
+
     private String groupId;
+    private String idTypeMessage;
 
 }

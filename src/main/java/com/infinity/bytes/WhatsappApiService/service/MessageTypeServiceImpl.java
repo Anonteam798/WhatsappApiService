@@ -1,24 +1,22 @@
 package com.infinity.bytes.WhatsappApiService.service;
 
-import com.infinity.bytes.WhatsappApiService.config.ClassMapper;
 import com.infinity.bytes.WhatsappApiService.exception.DataNotFoundException;
 import com.infinity.bytes.WhatsappApiService.exception.DataRepeatedException;
-import com.infinity.bytes.WhatsappApiService.model.dto.response.MessageTypeDTOResp;
 import com.infinity.bytes.WhatsappApiService.model.entity.MessageTypes;
 import com.infinity.bytes.WhatsappApiService.repository.IWhatsappMessageType;
+import com.infinity.bytes.WhatsappApiService.service.interfaces.IMainService;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 
 @Transactional
 @Service
 @Slf4j
-public class MessageTypeServiceImpl implements  IMainService<MessageTypes>{
+public class MessageTypeServiceImpl implements IMainService<MessageTypes> {
 
     private IWhatsappMessageType objIWhatsappMessageType;
 
@@ -40,6 +38,10 @@ public class MessageTypeServiceImpl implements  IMainService<MessageTypes>{
                 .findById((Integer) id);
         if (findItem.isEmpty()) throw  new DataNotFoundException("No se han encontrado el objeto Mensaje Item con el id: "+id);
         return  findItem;
+    }
+
+    public Optional<MessageTypes> findByTypeName(String typeName){
+        return this.objIWhatsappMessageType.findByType(typeName);
     }
 
     @Override

@@ -2,7 +2,7 @@ package com.infinity.bytes.WhatsappApiService.seeder;
 
 import com.infinity.bytes.WhatsappApiService.model.Constants.MessageTypesEnum;
 import com.infinity.bytes.WhatsappApiService.model.entity.MessageTypes;
-import com.infinity.bytes.WhatsappApiService.service.IMainService;
+import com.infinity.bytes.WhatsappApiService.service.interfaces.IMainService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.Date;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -20,14 +21,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Builder
 @Table(catalog = "whatsappDb", schema = "public")
-@NamedQueries({
-    @NamedQuery(name = "Contact.findAll", query = "SELECT c FROM Contact c")})
 public class Contact implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@Basic(optional = false,)
     private Integer id;
     private String phoneNumber;
     private String alias;

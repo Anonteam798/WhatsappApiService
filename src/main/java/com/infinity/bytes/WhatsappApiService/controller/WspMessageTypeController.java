@@ -6,7 +6,7 @@ import com.infinity.bytes.WhatsappApiService.model.Constants.ResponseDtoEnum;
 import com.infinity.bytes.WhatsappApiService.model.dto.ResponseDto;
 import com.infinity.bytes.WhatsappApiService.model.dto.response.MessageTypeDTOResp;
 import com.infinity.bytes.WhatsappApiService.model.entity.MessageTypes;
-import com.infinity.bytes.WhatsappApiService.service.IMainService;
+import com.infinity.bytes.WhatsappApiService.service.interfaces.IMainService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
