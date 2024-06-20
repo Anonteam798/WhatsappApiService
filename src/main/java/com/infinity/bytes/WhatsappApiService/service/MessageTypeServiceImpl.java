@@ -9,6 +9,7 @@ import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,6 +45,28 @@ public class MessageTypeServiceImpl implements IMainService<MessageTypes> {
         return this.objIWhatsappMessageType.findByType(typeName);
     }
 
+    /**
+     * Encargado de buscar el tipo de mensaje ya sea por el nombre en el caso de que no exista este se crea automaticamente
+     * @param typeName Tipo de mensaje WhatsApp a buscar
+     * @return Entidad encontrada o creada
+     */
+    public Optional<MessageTypes> findByTypeNameOrCreate(String typeName){
+
+        Optional<MessageTypes> found = findByTypeName(typeName);
+
+        if (found.isEmpty()){
+            MessageTypes typeCreated = this.objIWhatsappMessageType
+                    .save(MessageTypes.builder()
+                            .type(typeName)
+                            .isActive("S")
+                            .dateCreation(new Date())
+                            .build());
+
+            return  Optional.of(typeCreated);
+        }
+
+        return found;
+    }
     @Override
     public MessageTypes createItem(MessageTypes newItem) {
         Optional<MessageTypes> exists = this.objIWhatsappMessageType.findByType(newItem.getType());

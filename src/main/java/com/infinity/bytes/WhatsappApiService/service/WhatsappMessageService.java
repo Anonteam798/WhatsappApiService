@@ -42,7 +42,7 @@ public class WhatsappMessageService  {
         log.debug("Procesando los contactos antes de guardar el mensaje");
         Contact contFrom =  this.contactService.createNewContact(request.getIdContactFrom());
         Contact contTo = this.contactService.createNewContact(request.getIdContactTo());
-        MessageTypes findType = this.messageTypeService.findByTypeName(request.getIdTypeMessage()).get();
+        MessageTypes findType = this.messageTypeService.findByTypeNameOrCreate(request.getIdTypeMessage()).get();
 
         WhatsappMensaje newMessage = WhatsappMensaje
                 .builder()

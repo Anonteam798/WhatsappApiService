@@ -6,6 +6,7 @@ package com.infinity.bytes.WhatsappApiService.model.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -21,9 +22,8 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Builder
 @Table(catalog = "whatsappDb", schema = "public")
-@NamedQueries({
-    @NamedQuery(name = "Bussiness.findAll", query = "SELECT b FROM Bussiness b")})
 public class Bussiness implements Serializable {
 
     private static final long serialVersionUID = 1L;

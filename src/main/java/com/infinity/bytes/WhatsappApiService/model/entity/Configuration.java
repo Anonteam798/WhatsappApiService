@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -19,9 +20,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Builder
 @Table(catalog = "whatsappDb", schema = "public")
-@NamedQueries({
-    @NamedQuery(name = "Configuration.findAll", query = "SELECT c FROM Configuration c")})
 public class Configuration implements Serializable {
 
     private static final long serialVersionUID = 1L;
