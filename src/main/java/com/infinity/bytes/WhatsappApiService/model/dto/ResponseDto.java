@@ -1,6 +1,7 @@
 package com.infinity.bytes.WhatsappApiService.model.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,5 +21,8 @@ public class ResponseDto {
     private String message;
     private Object errors;
     private Object data;
+
+    @JsonIgnore
+    private int responseCode;
 
 }

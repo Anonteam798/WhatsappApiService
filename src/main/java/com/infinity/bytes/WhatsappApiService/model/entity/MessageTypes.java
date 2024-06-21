@@ -38,6 +38,6 @@ public class MessageTypes implements Serializable {
     private Date dateDeleted;
 
     @OneToMany(mappedBy = "idTypeMessage", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<WhatsappMensaje> whatsappMensajes;
+    private List<WhatsappMensaje> whatsappMensajegit ;
 
 }

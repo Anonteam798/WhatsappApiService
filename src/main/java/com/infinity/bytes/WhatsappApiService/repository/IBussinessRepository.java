@@ -14,7 +14,8 @@ public interface IBussinessRepository
     List<Bussiness> findByRuc(String ruc);
     List<Bussiness> findByPhone(String phone);
     List<Bussiness> findByRazonSocial(String razonSocial);
-
+    List<Bussiness> findByIsActive(String isActive);
+    List<Bussiness> findByRucOrRazonSocialContaining(String ruc, String razonSocial);
 
 
 }

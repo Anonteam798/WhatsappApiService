@@ -4,6 +4,7 @@
  */
 package com.infinity.bytes.WhatsappApiService.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -43,6 +44,7 @@ public class Bussiness implements Serializable {
     private String twiterUrl;
     private String whatsappContactMe;
     @Lob
+    @Column(name = "logo", columnDefinition = "BLOB")
     private byte[] logo;
     private String logoName;
     private String isActive;
@@ -51,6 +53,7 @@ public class Bussiness implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateDeleted;
     @OneToMany(mappedBy = "bussinessId", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private Collection<Configuration> configurationCollection;
 
 }
