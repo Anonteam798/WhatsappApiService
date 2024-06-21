@@ -6,6 +6,8 @@ package com.infinity.bytes.WhatsappApiService.model.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -41,6 +43,7 @@ public class Configuration implements Serializable {
     private Date dateDeleted;
     @JoinColumn(name = "bussinessId", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
     private Bussiness bussinessId;
 
 }

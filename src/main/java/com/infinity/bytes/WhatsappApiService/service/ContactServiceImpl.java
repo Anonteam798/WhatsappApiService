@@ -33,6 +33,7 @@ public class ContactServiceImpl extends AbstractMainService<Contact> {
                 return cont.get();}
 
             log.debug("Se procede a crear el registro");
+
             Contact created =  this
                     .objContactRepository.save(
                             Contact.builder()
