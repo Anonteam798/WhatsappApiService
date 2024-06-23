@@ -43,7 +43,6 @@ public class BussinessController {
                 .returnResponse(
                         ResponseDto
                                 .builder()
-                                .success(!found.isEmpty())
                                 .message(found.isEmpty() ? "No se han encontrado registros":"Registro encontrado")
                                 .errors(null)
                                 .data(bussinessService.convertEntityToDto(found))
@@ -57,7 +56,6 @@ public class BussinessController {
             createNewBussiness(@RequestBody BussinessDtoReq newBussiness){
 
         log.debug("Nueva entidad entrante:  " + newBussiness.toString());
-        boolean isCreated = false;
         Bussiness converted = classMapper.modelMapper().map(newBussiness
             , Bussiness.class);
 
@@ -70,27 +68,25 @@ public class BussinessController {
         List<Bussiness> found = bussinessService
                 .findByRucOrRazonSocialContaining(newBussiness.getRuc(), newBussiness.getRazonSocial());
 
-        if (found.isEmpty()){
+        if (found.isEmpty()) {
             log.debug("No se han encontrado negocios con ese ruc o razon social, guardando");
 
             log.debug("Guardando entidad");
-             found =  List.of(bussinessService.createItem(converted));
-             isCreated = true;
+            found = List.of(bussinessService.createItem(converted));
             log.debug("Nueva entidad covertida y guardada:  " + converted.toString());
         }
-
 
         return  QuickResponseUtil
                 .returnResponse(
                         ResponseDto
                                 .builder()
                                 .success(true)
-                                .message(isCreated? "Negocio registrado con exito":"Ya existen registros con ese ruc o razon social")
                                 .errors(null)
                                 .data(bussinessService.convertEntityToDto(found))
                                 .responseCode(200)
                                 .build()
                 );
+
 
     }
 
