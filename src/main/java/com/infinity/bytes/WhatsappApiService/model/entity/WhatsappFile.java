@@ -32,10 +32,10 @@ public class WhatsappFile implements Serializable {
     private String name;
     private String fullPath;
     private String extension;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     private Double size;
     private String isUploaded;
     private String uploadUrl;
+    private String hash;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreation;
     @Temporal(TemporalType.TIMESTAMP)
